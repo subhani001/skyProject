@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+ <head>
+ <meta charset="utf-8">
+ <title>Sky UK (formerly British Sky Broadcasting Limited, BSkyB and Sky)</title>
+ <link rel="stylesheet" href="{%static 'skyTestApp/demo.css'%}">
+ </head>
+
+<body>
+  <img src="{% static "skyTestApp/sky.jpg" %}" alt="My image" align="middle" height=100px width=200px>
+
+<h1> The Tasks list is : </h1>
+
+
+{% if task_list %}
+<table border="1">
+  <thead>
+    <th> id </th>
+    <th> name </th>
+    <th> status </th>
+    <th> start_date </th>
+    <th> end_date </th>
+    <th> parent </th>
+    <th> duration (minutes) </th>
+    <th> net_duration (minutes) </th>
+  </thead>
+  {% for task in task_list %}
+  <tr>
+    <td> {{task.id}} </td>
+    <td>{{task.name}}</td>
+    <td>{{task.status}}</td>
+    <td> {{task.start_date}}</td>
+    <td> {{task.end_date}}</td>
+    <td> {{task.parent}}</td>
+    <td> {{task.duration}}</td>
+    <td> {{task.net_duration}}</td>
+  </tr> {% endfor %}
+</table>
+{%else%}
+<p> No records found </p>
+{% endif %}
+</body>
+</html>
